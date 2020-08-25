@@ -69,11 +69,41 @@ class Main extends React.Component{
       gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
     }
   }
+  //selectBox Method -- possibly fix... on doesn't show but off does
+  selectBox = (row,col) => {
+    let gridCopy = arrayClone(this.state.gridFull); //indirectly update state with a copy using helper function
+    gridCopy[row][col] = !gridCopy[row][col]; //set box to opposite of itself
+    this.setState({ //updating state
+      gridFull: gridCopy 
+    })
+  }
+
+  //Seed board - random placement generator
+seed = () => {
+  let gridCopy = arrayClone(this.state.gridFull);
+  for (let i = 0; i < this.rows; i++) {
+    for (let j = 0; j < this.cols; j++) {
+      if (Math.floor(Math.random() * 4) === 1) {
+        gridCopy[i][j] = true;
+      }
+    }
+  }
+  this.setState({
+    gridFull: gridCopy
+  });
+}
+
+//lifecycle hook to have grid seeded right away
+
+componentDidMount() {
+  this.seed();
+}
+
   //render what will show
   render(){
     return (
       <div>
-        <h1> The Game of LIfe</h1>
+        <h1> The Game of Life</h1>
         {/* //create grid */}
         <Grid 
         gridFull = {this.state.gridFull} //properties of gridFull
@@ -83,11 +113,14 @@ class Main extends React.Component{
         />
         <h2>Generations: {this.state.generation}</h2>
       </div>
-    )
+    );
   }
 }
 
-
+//helper function
+function arrayClone(arr) {
+  return JSON.parse(JSON.stringify(arr)); //deep clone because nested array - clones all arrays inside arrays
+}
 
 
 ReactDOM.render(

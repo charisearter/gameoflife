@@ -14,11 +14,11 @@ body {
 
 /* dead boxes - off  make into images later possibly*/
 .off{
-  background: white;
+  background: whitesmoke;
 }
 /* alive boxes - on */
 .on {
-  background: green;
+  background-color: green;
 }
 /* hover when making choice before game starts */
 .box:hover {
