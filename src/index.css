@@ -18,7 +18,7 @@ body {
 }
 /* alive boxes - on */
 .on {
-  background-color: green;
+  background: green;
 }
 /* hover when making choice before game starts */
 .box:hover {

@@ -37,7 +37,7 @@ class Grid extends React.Component {
           //push boxes into rows array
           rowsArr.push(
             <Box 
-              boxClass={boxClass} key={boxId} boxId={boxId} row={i} col={j} selectBox={this.props.selectBox} 
+              boxClass={boxClass} key={boxId} boxId={boxId} row={i} cols={j} selectBox={this.props.selectBox} 
             />
           )
       }
@@ -63,12 +63,12 @@ class Buttons extends React.Component {
     return (
       <div className = 'center'>
         <ButtonToolbar>
-          <button classname="btn btn-default" onClick={this.props.playButton}> Play </button>
-          <button classname="btn btn-default" onClick={this.props.pauseButton}> Pause </button>
-          <button classname="btn btn-default" onClick={this.props.slow}> Slow </button>
-          <button classname="btn btn-default" onClick={this.props.fast}> Fast </button>
-          <button classname="btn btn-default" onClick={this.props.seed}> Seed </button>
-          <button classname="btn btn-default" onClick={this.props.clear}> Clear </button>
+          <button className="btn btn-default" onClick={this.props.playButton}> Play </button>
+          <button className="btn btn-default" onClick={this.props.pauseButton}> Pause </button>
+          <button className="btn btn-default" onClick={this.props.slow}> Slow </button>
+          <button className="btn btn-default" onClick={this.props.fast}> Fast </button>
+          <button className="btn btn-default" onClick={this.props.seed}> Seed </button>
+          <button className="btn btn-default" onClick={this.props.clear}> Clear </button>
       {/* Work on buttun aesthetic for bootstrap*/}
           <DropdownButton title='Grid Size' id='size-menu' onSelect={this.handleSelect}>
           <Dropdown.Item eventKey='1'>20x10</Dropdown.Item>
@@ -102,6 +102,7 @@ class Main extends React.Component{
   }
   //selectBox Method -- possibly fix... on doesn't show but off does
   selectBox = (row,col) => {
+    console.log('click it')
     let gridCopy = arrayClone(this.state.gridFull); //indirectly update state with a copy using helper function
     gridCopy[row][col] = !gridCopy[row][col]; //set box to opposite of itself
     this.setState({ //updating state
