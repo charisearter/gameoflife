@@ -104,31 +104,35 @@ playButton = () => {
 play = () => {
   let g = this.state.gridFull; //checks state of grid (1st copy)
   let g2 = arrayClone(this.state.gridFull); // (2nd copy) change the squares on the clone
-
+//Rules for Conway's game of life
   for (let i=0; i < this.rows; i++) {
     for (let j=0; j < this.cols; j++) {
-      let count = 0;
-      if (i > 0) if (g[i-1][j]) count++;
-      if (i > 0 && j > 0) if (g[i-1][j-1]) count++;
-      if (i > 0 && j < this.cols-1) if (g[i-1][j+1]) count++;
-      if (j < this.cols-1) if (g[i][j+1]) count++;
-      if (j > 0) if (g[i][j-1]) count++;
-      if (i < this.rows-1) if (g[i+1][j]) count++;
-      if (i < this.rows-1 && j > 0) if (g[i+1][j-1]) count++;
-      if (i < this.rows-1 && this.cols-1) if (g[i+1][j+1]) count++;
-      if (g[i][j] && (count < 2 || count > 3)) g2[i][j] = false;
+      let count = 0; //how many neighbors surrond particular cell
+      if (i > 0) if (g[i-1][j]) count++; //if neighbor  + 1
+      if (i > 0 && j > 0) if (g[i-1][j-1]) count++;//if neighbor  + 1
+      if (i > 0 && j < this.cols-1) if (g[i-1][j+1]) count++;//if neighbor  + 1
+      if (j < this.cols-1) if (g[i][j+1]) count++;//if neighbor  + 1
+      if (j > 0) if (g[i][j-1]) count++;//if neighbor  + 1
+      if (i < this.rows-1) if (g[i+1][j]) count++;//if neighbor  + 1
+      if (i < this.rows-1 && j > 0) if (g[i+1][j-1]) count++;//if neighbor  + 1
+      if (i < this.rows-1 && this.cols-1) if (g[i+1][j+1]) count++;//if neighbor  + 1
+      // cell dies if less than 2 neighbors (underpopulation) or more than 3 (overpopulation)
+      //otherwise it stays alive for next generation
+      if (g[i][j] && (count < 2 || count > 3)) g2[i][j] = false; 
+      //cell is brought to life if EXACTLY 3 neighbors (reproduction)
       if (!g[i][j] && count === 3) g2[i][j] = true;
     } 
   }
-  this.setState({
+  this.setState({ //updates state of grid
     gridFull: g2,
-    generation: this.state.generation + 1
+    generation: this.state.generation++ //go to next generation
   })
 }
 
 //lifecycle hook to have grid seeded right away - Works
 componentDidMount() {
-  this.seed();
+  this.seed(); //auto seed when mounts
+  this.playButton(); //start the game
 }
 
 
