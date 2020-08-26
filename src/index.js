@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap'
-
+import { Rules } from './Rules.js'
 //Box component
 
 class Box extends React.Component {
@@ -12,6 +12,7 @@ class Box extends React.Component {
   } 
   render(){
     return (
+
       <div 
         className={this.props.boxClass}
         id = {this.props.id}
@@ -71,9 +72,9 @@ class Buttons extends React.Component {
           <button className="btn btn-default" onClick={this.props.clear}> Clear </button>
       {/* Work on buttun aesthetic for bootstrap*/}
           <DropdownButton title='Grid Size' id='size-menu' onSelect={this.handleSelect}>
-          <Dropdown.Item eventKey='1'>20x10</Dropdown.Item>
-          <Dropdown.Item eventKey='2'>50x30</Dropdown.Item>
-          <Dropdown.Item eventKey='3'>70x50</Dropdown.Item>
+          <Dropdown.Item eventKey='1'>25 x 25 - Small</Dropdown.Item>
+          <Dropdown.Item eventKey='2'>50 x 50 - Medium</Dropdown.Item>
+          <Dropdown.Item eventKey='3'>150 x 150 - Large</Dropdown.Item>
           </DropdownButton>
         </ButtonToolbar>
 
@@ -172,16 +173,16 @@ clear = () => {
 gridSize = (size) => {
   switch (size) {
     case "1":
-      this.cols = 20;
-      this.rows = 10;
+      this.cols = 25;
+      this.rows = 25;
     break
     case "2":
       this.cols = 50;
-      this.rows = 30;
+      this.rows = 50;
     break
     default:
-      this.cols = 70;
-      this.rows = 50;
+      this.cols = 150;
+      this.rows = 150;
   }
   this.clear();
 }
@@ -209,31 +210,23 @@ play = () => {
       if (!g[i][j] && count === 3) g2[i][j] = true;
     } 
   }
-  //if everything is dead -- Does not work
-  const apocalypse = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
-  console.log('grid: ', this.state.gridFull)
-  console.log('End of the world: ', apocalypse)
-  if (this.state.gridFull === apocalypse){
-    console.log('end of the world')
-    clearInterval(this.intervalId)
-    this.setState({
-      isPlaying: false,
-      generation: 0
-    })
-  }
+  // //if everything is dead -- Does not work
+  // const apocalypse = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+  // console.log('grid: ', this.state.gridFull)
+  // console.log('End of the world: ', apocalypse)
+  // if (this.state.isPlaying = true && this.state.gridFull === apocalypse){
+  //   console.log('end of the world')
+  //   clearInterval(this.intervalId)
+  //   this.setState({
+  //     isPlaying: false,
+  //     generation: 0
+  //   })
+  // }
   this.setState({ //updates state of grid
     gridFull: g2,
     generation: this.state.generation + 1 //go to next generation
   })
 }
-
-//lifecycle hook to have grid seeded right away - Works
-componentDidMount() {
-  this.seed(); //auto seed when mounts
-  //this.playButton(); //start the game COMMENTED out to stop auto play
-}
-
-
   //render what will show
   render(){
     return (
@@ -270,6 +263,7 @@ function arrayClone(arr) {
 
 ReactDOM.render(
   <React.StrictMode>
+    <Rules />
     <Main />
   </React.StrictMode>,
   document.getElementById('root')
