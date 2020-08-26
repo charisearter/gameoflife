@@ -97,17 +97,23 @@ class Main extends React.Component{
     this.state = { //setting the states
       generation: 0, //always start at 0 for the genration state
       //create grid depending on rows and cols and each element set to false /turned off / dead
-      gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+      gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false)),
+      isPlaying: false //default for not playing
     }
   }
   //selectBox Method -- possibly fix... on doesn't show but off does
   selectBox = (row,col) => {
-    console.log('click it')
+    if (this.state.isPlaying === true) {
+      return
+    }
     let gridCopy = arrayClone(this.state.gridFull); //indirectly update state with a copy using helper function
     gridCopy[row][col] = !gridCopy[row][col]; //set box to opposite of itself
     this.setState({ //updating state
       gridFull: gridCopy 
     })
+    if (this.play === true){
+      this.selectBox = false
+    }
   }
 
   //Seed board - random placement generator
@@ -130,6 +136,9 @@ seed = () => {
 playButton = () => {
   clearInterval(this.intervalId) // start over when clicked
   this.intervalId = setInterval(this.play, this.speed)
+  this.setState({
+    isPlaying: true
+  })
 }
 
 //Pause button
@@ -153,7 +162,8 @@ clear = () => {
   let grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
   this.setState({
     gridFull: grid,
-    generation: 0
+    generation: 0,
+    isPlaying: false
   });
 }
 
@@ -199,6 +209,18 @@ play = () => {
       if (!g[i][j] && count === 3) g2[i][j] = true;
     } 
   }
+  //if everything is dead -- Does not work
+  const apocalypse = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+  console.log('grid: ', this.state.gridFull)
+  console.log('End of the world: ', apocalypse)
+  if (this.state.gridFull === apocalypse){
+    console.log('end of the world')
+    clearInterval(this.intervalId)
+    this.setState({
+      isPlaying: false,
+      generation: 0
+    })
+  }
   this.setState({ //updates state of grid
     gridFull: g2,
     generation: this.state.generation + 1 //go to next generation
@@ -208,7 +230,7 @@ play = () => {
 //lifecycle hook to have grid seeded right away - Works
 componentDidMount() {
   this.seed(); //auto seed when mounts
-  this.playButton(); //start the game
+  //this.playButton(); //start the game COMMENTED out to stop auto play
 }
 
 
