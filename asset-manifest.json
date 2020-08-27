@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/gaemoflife/static/css/main.a7f1576f.chunk.css",
+    "main.js": "/gaemoflife/static/js/main.9de97c29.chunk.js",
+    "main.js.map": "/gaemoflife/static/js/main.9de97c29.chunk.js.map",
+    "runtime-main.js": "/gaemoflife/static/js/runtime-main.48065677.js",
+    "runtime-main.js.map": "/gaemoflife/static/js/runtime-main.48065677.js.map",
+    "static/js/2.6e2443d8.chunk.js": "/gaemoflife/static/js/2.6e2443d8.chunk.js",
+    "static/js/2.6e2443d8.chunk.js.map": "/gaemoflife/static/js/2.6e2443d8.chunk.js.map",
+    "index.html": "/gaemoflife/index.html",
+    "precache-manifest.e5fdd2572d96995f79f8e45afe6e0d94.js": "/gaemoflife/precache-manifest.e5fdd2572d96995f79f8e45afe6e0d94.js",
+    "service-worker.js": "/gaemoflife/service-worker.js",
+    "static/css/main.a7f1576f.chunk.css.map": "/gaemoflife/static/css/main.a7f1576f.chunk.css.map",
+    "static/js/2.6e2443d8.chunk.js.LICENSE.txt": "/gaemoflife/static/js/2.6e2443d8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.48065677.js",
+    "static/js/2.6e2443d8.chunk.js",
+    "static/css/main.a7f1576f.chunk.css",
+    "static/js/main.9de97c29.chunk.js"
+  ]
+}
