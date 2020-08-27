@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap'
+import { Button, DropdownButton, Dropdown } from 'react-bootstrap'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import { Rules } from './Rules.js'
 //Box component
 
@@ -63,20 +64,20 @@ class Buttons extends React.Component {
   render() {
     return (
       <div className = 'center'>
-        <ButtonToolbar>
-          <button className="btn btn-default" onClick={this.props.playButton}> Play </button>
-          <button className="btn btn-default" onClick={this.props.pauseButton}> Pause </button>
-          <button className="btn btn-default" onClick={this.props.slow}> Slow </button>
-          <button className="btn btn-default" onClick={this.props.fast}> Fast </button>
-          <button className="btn btn-default" onClick={this.props.seed}> Seed </button>
-          <button className="btn btn-default" onClick={this.props.clear}> Clear </button>
-      {/* Work on buttun aesthetic for bootstrap*/}
-          <DropdownButton title='Grid Size' id='size-menu' onSelect={this.handleSelect}>
+        <ButtonGroup>
+          <Button className="btn" onClick={this.props.playButton}> Play </Button>{' '}
+          <Button className="btn btn-default" onClick={this.props.pauseButton}> Pause </Button>{' '}
+          <Button className="btn btn-default" onClick={this.props.slow}> Slow </Button>{' '}
+          <Button className="btn btn-default" onClick={this.props.fast}> Fast </Button>{' '}
+          <Button className="btn btn-default" onClick={this.props.seed}> Seed </Button>{' '}
+          <Button className="btn btn-default" onClick={this.props.clear}> Clear </Button>{' '}
+      {/* Work on button aesthetic for bootstrap*/}
+          <DropdownButton className= 'center' as={ButtonGroup} title='Grid Size' id='size-menu' onSelect={this.handleSelect}>
           <Dropdown.Item eventKey='1'>25 x 25 - Small</Dropdown.Item>
           <Dropdown.Item eventKey='2'>50 x 50 - Medium</Dropdown.Item>
           <Dropdown.Item eventKey='3'>150 x 150 - Large</Dropdown.Item>
           </DropdownButton>
-        </ButtonToolbar>
+        </ButtonGroup>
 
       </div>
     )
@@ -231,7 +232,7 @@ play = () => {
   render(){
     return (
       <div>
-        <h1> The Game of Life</h1>
+        <h1> Conway's Game of Life</h1>
         {/* Create buttons here */}
         <Buttons
           playButton = {this.playButton}
@@ -263,8 +264,8 @@ function arrayClone(arr) {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Rules />
     <Main />
+    <Rules />
   </React.StrictMode>,
   document.getElementById('root')
 );
