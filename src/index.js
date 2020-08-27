@@ -244,13 +244,14 @@ play = () => {
           gridSize = {this.gridSize}
         />
         {/* create grid */}
+        <h2>Generations: {this.state.generation}</h2>
         <Grid 
         gridFull = {this.state.gridFull} //properties of gridFull
         rows = {this.rows} // properties of row
         cols = {this.cols} //properties of cols
         selectBox = {this.selectBox} //toggle boxes
         />
-        <h2>Generations: {this.state.generation}</h2>
+        
       </div>
     );
   }

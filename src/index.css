@@ -36,7 +36,7 @@ body {
   width: 150px;
   line-height: 0;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 /* text stuff */
 h1,h2,h3,h4 {
@@ -54,7 +54,7 @@ h4 {
 .rules {
   margin: auto;
   display: table;
-  margin-top: 10px;
+  margin-top: 5px;
   color: white;
   border: 5px groove #847979 ;
 }
