@@ -73,9 +73,9 @@ class Buttons extends React.Component {
           <Button className="btn btn-default" onClick={this.props.clear}> Clear </Button>{' '}
       {/* Work on button aesthetic for bootstrap*/}
           <DropdownButton className= 'center' as={ButtonGroup} title='Grid Size' id='size-menu' onSelect={this.handleSelect}>
-          <Dropdown.Item eventKey='1'>25 x 25 - Small</Dropdown.Item>{' | '}
-          <Dropdown.Item eventKey='2'>50 x 50 - Medium</Dropdown.Item>{' | '}
-          <Dropdown.Item eventKey='3'>100 x 100 - Large</Dropdown.Item>
+          <Dropdown.Item eventKey='1'>25 x 25 - Small</Dropdown.Item>
+          <Dropdown.Item eventKey='2'>50 x 50 - Medium</Dropdown.Item>
+          <Dropdown.Item eventKey='3'>150 x 150 - Large</Dropdown.Item>
           </DropdownButton>
         </ButtonGroup>
 
@@ -182,8 +182,8 @@ gridSize = (size) => {
       this.rows = 50;
     break
     default:
-      this.cols = 100;
-      this.rows = 100;
+      this.cols = 150;
+      this.rows = 150;
   }
   this.clear();
 }
@@ -211,6 +211,18 @@ play = () => {
       if (!g[i][j] && count === 3) g2[i][j] = true;
     } 
   }
+  // //if everything is dead -- Does not work
+  // const apocalypse = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+  // console.log('grid: ', this.state.gridFull)
+  // console.log('End of the world: ', apocalypse)
+  // if (this.state.isPlaying = true && this.state.gridFull === apocalypse){
+  //   console.log('end of the world')
+  //   clearInterval(this.intervalId)
+  //   this.setState({
+  //     isPlaying: false,
+  //     generation: 0
+  //   })
+  // }
   this.setState({ //updates state of grid
     gridFull: g2,
     generation: this.state.generation + 1 //go to next generation

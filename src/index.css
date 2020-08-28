@@ -1,11 +1,5 @@
 body {
-  background: rgb(19, 17, 17);
-  color: white;
-}
-
-a {
-  color: white;
-
+  background: black;
 }
 
 /* //design for boxes in grid --make into circles later after getting to work*/
@@ -21,7 +15,7 @@ a {
 
 /* dead boxes - off  make into images later possibly*/
 .off{
-  background: white;
+  background: whitesmoke;
 }
 /* alive boxes - on */
 .on {
@@ -29,7 +23,7 @@ a {
 }
 /* hover when making choice before game starts */
 .box:hover {
-  background: palevioletred;
+  background: pink;
 }
 /* design look */
 .center {
@@ -50,7 +44,7 @@ h1,h2,h3,h4 {
   margin: auto;
   text-align: center;
   width: 50%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 h4 {
