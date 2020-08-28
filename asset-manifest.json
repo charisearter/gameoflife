@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/gameoflife/static/css/main.a7f1576f.chunk.css",
-    "main.js": "/gameoflife/static/js/main.9de97c29.chunk.js",
-    "main.js.map": "/gameoflife/static/js/main.9de97c29.chunk.js.map",
-    "runtime-main.js": "/gameoflife/static/js/runtime-main.d474d197.js",
-    "runtime-main.js.map": "/gameoflife/static/js/runtime-main.d474d197.js.map",
-    "static/js/2.6e2443d8.chunk.js": "/gameoflife/static/js/2.6e2443d8.chunk.js",
-    "static/js/2.6e2443d8.chunk.js.map": "/gameoflife/static/js/2.6e2443d8.chunk.js.map",
-    "index.html": "/gameoflife/index.html",
-    "precache-manifest.625c1c8559185474093687098e2ca9e7.js": "/gameoflife/precache-manifest.625c1c8559185474093687098e2ca9e7.js",
-    "service-worker.js": "/gameoflife/service-worker.js",
-    "static/css/main.a7f1576f.chunk.css.map": "/gameoflife/static/css/main.a7f1576f.chunk.css.map",
-    "static/js/2.6e2443d8.chunk.js.LICENSE.txt": "/gameoflife/static/js/2.6e2443d8.chunk.js.LICENSE.txt"
+    "main.css": "/gaemoflife/static/css/main.a7f1576f.chunk.css",
+    "main.js": "/gaemoflife/static/js/main.9de97c29.chunk.js",
+    "main.js.map": "/gaemoflife/static/js/main.9de97c29.chunk.js.map",
+    "runtime-main.js": "/gaemoflife/static/js/runtime-main.48065677.js",
+    "runtime-main.js.map": "/gaemoflife/static/js/runtime-main.48065677.js.map",
+    "static/js/2.6e2443d8.chunk.js": "/gaemoflife/static/js/2.6e2443d8.chunk.js",
+    "static/js/2.6e2443d8.chunk.js.map": "/gaemoflife/static/js/2.6e2443d8.chunk.js.map",
+    "index.html": "/gaemoflife/index.html",
+    "precache-manifest.e5fdd2572d96995f79f8e45afe6e0d94.js": "/gaemoflife/precache-manifest.e5fdd2572d96995f79f8e45afe6e0d94.js",
+    "service-worker.js": "/gaemoflife/service-worker.js",
+    "static/css/main.a7f1576f.chunk.css.map": "/gaemoflife/static/css/main.a7f1576f.chunk.css.map",
+    "static/js/2.6e2443d8.chunk.js.LICENSE.txt": "/gaemoflife/static/js/2.6e2443d8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d474d197.js",
+    "static/js/runtime-main.48065677.js",
     "static/js/2.6e2443d8.chunk.js",
     "static/css/main.a7f1576f.chunk.css",
     "static/js/main.9de97c29.chunk.js"
