@@ -120,22 +120,30 @@ class Main extends React.Component{
 
   //Seed board - random placement generator
 seed = () => {
+  if (this.state.isPlaying === true){
+    return
+  }
   let gridCopy = arrayClone(this.state.gridFull);
   for (let i = 0; i < this.rows; i++) {
     for (let j = 0; j < this.cols; j++) {
       if (Math.floor(Math.random() * 4) === 1) {
         gridCopy[i][j] = true;
       }
+      
     }
   }
   this.setState({
     gridFull: gridCopy
+    
   });
 }
 
 //play button
 //set Interval will call play at the speed set (100ms)
 playButton = () => {
+  if (this.setState.isPlaying === false){
+    return
+  }
   clearInterval(this.intervalId) // start over when clicked
   this.intervalId = setInterval(this.play, this.speed)
   this.setState({
@@ -145,17 +153,26 @@ playButton = () => {
 
 //Pause button
 pauseButton = () => {
+  if (this.setState.isPlaying === false){
+    return
+  }
   clearInterval(this.intervalId)
 }
 
 //Slow button
 slow = () => {
+  if (this.setState.isPlaying === false){
+    return
+  }
   this.speed= 1000;
   this.playButton();
 }
 
 //Fast Button
 fast = () => {
+  if (this.setState.isPlaying === false){
+    return
+  }
   this.speed = 100;
   this.playButton();
 }
@@ -221,6 +238,8 @@ play = () => {
     return (
       <div>
         <h1> Conway's Game of Life</h1>
+        <h2>Click on cells to make them live (green) or click SEED, then press PLAY.</h2>
+        <h3>For a new game, press PAUSE, then CLEAR. SEED it again or make your own, then press PLAY.</h3>
         {/* Create buttons here */}
         <Buttons
           playButton = {this.playButton}
