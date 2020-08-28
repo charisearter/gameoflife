@@ -73,9 +73,9 @@ class Buttons extends React.Component {
           <Button className="btn btn-default" onClick={this.props.clear}> Clear </Button>{' '}
       {/* Work on button aesthetic for bootstrap*/}
           <DropdownButton className= 'center' as={ButtonGroup} title='Grid Size' id='size-menu' onSelect={this.handleSelect}>
-          <Dropdown.Item eventKey='1'>25 x 25 - Small</Dropdown.Item>
-          <Dropdown.Item eventKey='2'>50 x 50 - Medium</Dropdown.Item>
-          <Dropdown.Item eventKey='3'>150 x 150 - Large</Dropdown.Item>
+          <Dropdown.Item eventKey='1'>25 x 25 - Small</Dropdown.Item>{' | '}
+          <Dropdown.Item eventKey='2'>50 x 50 - Medium</Dropdown.Item>{' | '}
+          <Dropdown.Item eventKey='3'>100 x 100 - Large</Dropdown.Item>
           </DropdownButton>
         </ButtonGroup>
 
@@ -120,22 +120,30 @@ class Main extends React.Component{
 
   //Seed board - random placement generator
 seed = () => {
+  if (this.state.isPlaying === true){
+    return
+  }
   let gridCopy = arrayClone(this.state.gridFull);
   for (let i = 0; i < this.rows; i++) {
     for (let j = 0; j < this.cols; j++) {
       if (Math.floor(Math.random() * 4) === 1) {
         gridCopy[i][j] = true;
       }
+      
     }
   }
   this.setState({
     gridFull: gridCopy
+    
   });
 }
 
 //play button
 //set Interval will call play at the speed set (100ms)
 playButton = () => {
+  if (this.setState.isPlaying === false){
+    return
+  }
   clearInterval(this.intervalId) // start over when clicked
   this.intervalId = setInterval(this.play, this.speed)
   this.setState({
@@ -145,17 +153,26 @@ playButton = () => {
 
 //Pause button
 pauseButton = () => {
+  if (this.setState.isPlaying === false){
+    return
+  }
   clearInterval(this.intervalId)
 }
 
 //Slow button
 slow = () => {
+  if (this.setState.isPlaying === false){
+    return
+  }
   this.speed= 1000;
   this.playButton();
 }
 
 //Fast Button
 fast = () => {
+  if (this.setState.isPlaying === false){
+    return
+  }
   this.speed = 100;
   this.playButton();
 }
@@ -182,8 +199,8 @@ gridSize = (size) => {
       this.rows = 50;
     break
     default:
-      this.cols = 150;
-      this.rows = 150;
+      this.cols = 100;
+      this.rows = 100;
   }
   this.clear();
 }
@@ -211,18 +228,6 @@ play = () => {
       if (!g[i][j] && count === 3) g2[i][j] = true;
     } 
   }
-  // //if everything is dead -- Does not work
-  // const apocalypse = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
-  // console.log('grid: ', this.state.gridFull)
-  // console.log('End of the world: ', apocalypse)
-  // if (this.state.isPlaying = true && this.state.gridFull === apocalypse){
-  //   console.log('end of the world')
-  //   clearInterval(this.intervalId)
-  //   this.setState({
-  //     isPlaying: false,
-  //     generation: 0
-  //   })
-  // }
   this.setState({ //updates state of grid
     gridFull: g2,
     generation: this.state.generation + 1 //go to next generation
@@ -233,6 +238,8 @@ play = () => {
     return (
       <div>
         <h1> Conway's Game of Life</h1>
+        <h2>Click on cells to make them live (green) or click SEED, then press PLAY.</h2>
+        <h3>For a new game, press PAUSE, then CLEAR. SEED it again or make your own, then press PLAY.</h3>
         {/* Create buttons here */}
         <Buttons
           playButton = {this.playButton}
